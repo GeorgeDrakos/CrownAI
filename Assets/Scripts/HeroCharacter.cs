@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroCharacter : MonoBehaviour {
-    // Start is called before the first frame update
 
     // initiating variables
     [SerializeField] private int hp = 5;
@@ -13,10 +12,17 @@ public class HeroCharacter : MonoBehaviour {
     [SerializeField] private int lvl = 1;
     [SerializeField] private int exp = 0;
 
+    public int Hp { get => hp; set => hp = value; }
+    public int Dmg { get => dmg; set => dmg = value; }
+    public float Spd { get => spd; set => spd = value; }
+    public bool Alive { get => alive; set => alive = value; }
+    public int Lvl { get => lvl; set => lvl = value; }
+    public int Exp { get => exp; set => exp = value; }
+
     void Start() {
+
     }
 
-    // Update is called once per frame
     void Update() {
         checkMovement();
 
@@ -41,12 +47,14 @@ public class HeroCharacter : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-
         if (col.gameObject.tag.Equals("Enemy")) { // checks the tag of the colliding objects
-            Debug.Log("I hit an enemy");
+
+            EnemyParent enemy = col.GetComponent<EnemyParent>();
+            enemy.takeDmg(Dmg);
+
+            Debug.Log("Enemy Hp: " + enemy.Hp + " Damage dealt: " + Dmg);
         } else {
             Debug.Log("I didn't hit an enemy");
         }
-     //TODO fix it
     }
 }

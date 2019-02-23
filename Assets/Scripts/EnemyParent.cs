@@ -8,6 +8,13 @@ public class EnemyParent : MonoBehaviour {
     [SerializeField] private float spd = 0.1f;
     [SerializeField] private bool alive = true;
     [SerializeField] private int lvl = 1;
+
+    public int Hp { get => hp; set => hp = value; }
+    public int Dmg { get => dmg; set => dmg = value; }
+    public float Spd { get => spd; set => spd = value; }
+    public bool Alive { get => alive; set => alive = value; }
+    public int Lvl { get => lvl; set => lvl = value; }
+
     GameObject me;
     // Start is called before the first frame update
     void Start() {
@@ -16,12 +23,19 @@ public class EnemyParent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (hp<=0) {
-            die();
+            if (hp <= 0) {
+                die();
+            }
         }
-    }
 
-    void die() {
-            Destroy(me);
+    void OnTriggerEnter2D(Collider2D col) {
+            Debug.Log(Hp);
+        }
+
+    public void takeDmg(int amount) {
+        hp -= amount;
+    }
+        void die() {
+            Alive = false;
     }
 }
