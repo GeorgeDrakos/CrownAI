@@ -16,11 +16,12 @@ public class EnemyParent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (hp<=0) {
+            die();
+        }
     }
 
     void die() {
-        if (hp == 0) {
             Destroy(me);
-        }
     }
 }

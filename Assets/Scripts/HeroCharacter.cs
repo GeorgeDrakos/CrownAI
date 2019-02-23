@@ -12,12 +12,8 @@ public class HeroCharacter : MonoBehaviour {
     [SerializeField] private bool alive = true;
     [SerializeField] private int lvl = 1;
     [SerializeField] private int exp = 0;
-    GameObject Player;
 
     void Start() {
-        Vector3 playerPos = transform.position;
-        Player = new GameObject();
-
     }
 
     // Update is called once per frame
@@ -44,7 +40,13 @@ public class HeroCharacter : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision other) {
+    void OnTriggerEnter2D(Collider2D col) {
+
+        if (col.gameObject.tag.Equals("Enemy")) { // checks the tag of the colliding objects
+            Debug.Log("I hit an enemy");
+        } else {
+            Debug.Log("I didn't hit an enemy");
+        }
      //TODO fix it
     }
 }
