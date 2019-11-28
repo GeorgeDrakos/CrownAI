@@ -35,7 +35,8 @@ public class EnemyParent : MonoBehaviour {
     public void takeDmg(int amount) {
         hp -= amount;
     }
-        void die() {
+
+    void die() {
             Alive = false;
     }
 }
