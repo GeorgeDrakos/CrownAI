@@ -55,7 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\EnemyParent.cs" />
      <Compile Include="Assets\Scripts\HeroCharacter.cs" />
-     <Compile Include="Assets\Scripts\WindowPopUp.cs" />
+     <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>E:/repos/CrownAI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>

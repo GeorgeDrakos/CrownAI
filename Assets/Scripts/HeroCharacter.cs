@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeroCharacter : MonoBehaviour {
 
@@ -51,10 +52,10 @@ public class HeroCharacter : MonoBehaviour {
 
             EnemyParent enemy = col.GetComponent<EnemyParent>();
             enemy.takeDmg(Dmg);
-
+            SceneManager.LoadScene(1);
             Debug.Log("Enemy Hp: " + enemy.Hp + " Damage dealt: " + Dmg);
         } else {
-            Debug.Log("I didn't hit an enemy");
+            Debug.Log("If you see this there is a bug with collision detection :)");
         }
     }
 }
