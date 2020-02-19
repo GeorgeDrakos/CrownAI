@@ -9,19 +9,19 @@ public class QuestionChooser : MonoBehaviour
     Text score;
     QuestionGen newQ;
     QuestionGen exampleQ;
+    int opChoice;
 
     void Start() {
         newQ = generateQuestion();
-        //newQ = new QuestionGen(1,2,'<',true);
         Debug.Log(newQ.toString());
         questionDisplay(newQ);
     }
     public void questionDisplay(QuestionGen generatedQ) {
         questionText = GameObject.Find("Question").GetComponent<Text>();
         questionText.text = generatedQ.toString();
-        score = GameObject.Find("Score").GetComponent<Text>();
-
     }
+
+
     public void answerTrue() {
         if (newQ.answer == true) {
             Debug.Log("This is correct, you win!");
@@ -42,16 +42,24 @@ public class QuestionChooser : MonoBehaviour
 
     public QuestionGen generateQuestion() {
 
-         int LHS = Random.Range(1, 100);
-         int RHS = Random.Range(2, 100);
+         int LHS = Random.Range(0, 100);
+         int RHS = Random.Range(0, 100);
+         opChoice = Random.Range(0, 100);
 
-        if (LHS > RHS) {
-            LHS = Random.Range(1, 100);
-            RHS = Random.Range(2, 100);
-        }
-        else {
-           exampleQ = new QuestionGen(LHS, RHS, '<', true);
+        if (opChoice >= 50) {
+            if (LHS > RHS) {
+                exampleQ = new QuestionGen(LHS, RHS, '<', false);
+            } else if (LHS < RHS) {
+                exampleQ = new QuestionGen(LHS, RHS, '<', true);
+            }
+        } else if (opChoice <= 100) {
+
+            if (LHS > RHS) {
+                exampleQ = new QuestionGen(LHS, RHS, '>', true);
+            } else if (LHS < RHS) {
+                exampleQ = new QuestionGen(LHS, RHS, '>', false);
+            }
         }
         return exampleQ;
+        }
     }
-}
