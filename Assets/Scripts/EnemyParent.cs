@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyParent : MonoBehaviour {
-    //GameObject[] enemies;
-    //GameObject enemy;
 
-    [SerializeField] private int hp = 5;
-    [SerializeField] private bool alive = true;
-    [SerializeField] private int lvl = 1;
+    public int hp;
+    private bool alive = true;
+    private int lvl = 1;
 
     public int Hp { get => hp; set => hp = value; }
     public bool Alive { get => alive; set => alive = value; }

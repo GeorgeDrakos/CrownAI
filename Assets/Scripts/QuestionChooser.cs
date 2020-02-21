@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class QuestionChooser : MonoBehaviour
 {
@@ -30,14 +32,16 @@ public class QuestionChooser : MonoBehaviour
             Debug.Log("This is wrong :(");
 
         }
+        endOfFight();
     }
     public void answerFalse() {
         if (newQ.answer == false) {
             Debug.Log("This is correct, you win!");
-
+            
         } else {
             Debug.Log("This is wrong :(");
         }
+        endOfFight();
     }
 
     public QuestionGen generateQuestion() {
@@ -62,4 +66,8 @@ public class QuestionChooser : MonoBehaviour
         }
         return exampleQ;
         }
+
+    public void endOfFight() {
+        SceneManager.LoadScene(0);
     }
+}

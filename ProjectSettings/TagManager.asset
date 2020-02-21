@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - buttonLeft
+  - buttonRight
+  - buttonUp
+  - buttonDown
   layers:
   - Default
   - TransparentFX
